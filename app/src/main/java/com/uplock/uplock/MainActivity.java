@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 //Metodo para cambiar el mensaje de la app
                 actualizarMensaje("Alarma Activada!\nLa alarma sonara a las " + hourString+":"+minuteString );
 
+                //enviar un String adicional en el intent para saber cuando se presiona un boton
+                myIntent.putExtra("extra","alarmON");
+
                 //crear pending intent el cual se encarga del delay hasta la fecha indicada en la alarma
                 pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,myIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -117,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
                 actualizarMensaje("Alarma Apagada!");
 
                 alarmManager.cancel(pendingIntent);
+
+                // poner un string extra en intent para indicar cuando se presiona el boton
+                myIntent.putExtra("extra","alarmOFF");//alarma apagada = false
+
+
+                // stop the ringtone
+                sendBroadcast(myIntent);
             }
         });
 

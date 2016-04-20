@@ -11,6 +11,6 @@ import android.util.Log;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("Receiver worked","Worked!");
+        Log.e("Receiver worked","Se establecio la Señal!");
     }
 }

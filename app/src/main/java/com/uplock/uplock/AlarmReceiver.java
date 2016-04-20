@@ -12,5 +12,11 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.e("Receiver worked","Se establecio la Señal!");
+
+        //crear intent para el servicio del ringtone
+        Intent serviceIntent = new Intent(context,RingtonePlayingService.class);
+
+        //iniciar ringtone
+        context.startService(serviceIntent);
     }
 }

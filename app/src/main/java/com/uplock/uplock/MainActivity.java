@@ -2,7 +2,9 @@ package com.uplock.uplock;
 
 import android.annotation.TargetApi;
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker alarmTimePicker;
     TextView alarmMensaje;
     Context context;
+    PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        this.context = this;
 
         //inicializar alarm manager
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -47,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         //inicializar boton AplicarAlarma
         Button btnAplicarAlarma = (Button) findViewById(R.id.btnAplicarAlarma);
+
+        //crear intent en el alarm receiver
+        final Intent myIntent = new Intent(context,AlarmReceiver.class);
+
         //crear evento onClick para establecer alarma
         btnAplicarAlarma.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.M)
@@ -88,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Metodo para cambiar el mensaje de la app
                 actualizarMensaje("Alarma Activada!\nLa alarma sonara a las " + hourString+":"+minuteString );
+
+                //crear pending intent el cual se encarga del delay hasta la fecha indicada en la alarma
+                pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,myIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+                //establecer alarm manager
+                alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+
+
             }
         });
 
@@ -98,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 actualizarMensaje("Alarma Apagada!");
+
+                alarmManager.cancel(pendingIntent);
             }
         });
 

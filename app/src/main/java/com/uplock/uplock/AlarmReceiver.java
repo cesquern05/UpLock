@@ -15,7 +15,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         //obtener extra string de intent
         String obtenerExtraString = intent.getExtras().getString("extra");
-        Log.e("String Extra Obtenido: ",obtenerExtraString);
+        Log.e("String Extra Obtenido ",obtenerExtraString);
 
         //crear intent para el servicio del ringtone
         Intent serviceIntent = new Intent(context,RingtonePlayingService.class);

@@ -15,7 +15,7 @@ public class RingtonePlayingService extends Service {
 
     MediaPlayer mediaSong;
     int startId;
-
+    boolean isRunning;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -32,6 +32,7 @@ public class RingtonePlayingService extends Service {
 
         Log.e("Estado del RingTone", String.valueOf(estatus));
 
+        //Convertimos los strings extra del intent
         assert estatus!= null;
         if (estatus.equals("alarmON")){
             startId = 1;
@@ -43,9 +44,59 @@ public class RingtonePlayingService extends Service {
             startId = 0;
         }
 
-        //crea instancia de media player
-        mediaSong = MediaPlayer.create(this,R.raw.deadpool);
-        mediaSong.start();
+
+
+        //instrucciones if else
+        //si la alarma no esta sonando y el usuario presiono "encender alarma": inicia la alarma
+        if(!this.isRunning && startId == 1)
+        {
+            Log.e("La alarma no suena","La alarma se activara");
+            //crea instancia de media player
+            mediaSong = MediaPlayer.create(this,R.raw.deadpool);
+
+            //Inicia ringtone
+            mediaSong.start();
+
+            this.isRunning=true;
+            this.startId = 0;
+
+        }
+        //si la alarma esta sonando y el usuario presiona "apagar alarma": apaga alarma
+        else if(this.isRunning && startId == 0)
+        {
+            Log.e("La alarma suena","La alarma se apaga");
+
+            //apagar ringtone
+            mediaSong.stop();
+            mediaSong.reset();
+
+            this.isRunning = false;
+            this.startId = 0;
+
+        }
+        //Si el usuario presiona botones al azara
+        //si no esta sonando la alarma y el usuario presiona "apagar alarma": no pasa nada
+        else if(!this.isRunning && startId == 0)
+        {
+            Log.e("La alarma no suena","La alarma se apagara");
+            this.isRunning = false;
+            this.startId=0;
+        }
+        //si la alarma esta sonando y el usuario presiona "encender alarma": noo se hace nada
+        else if(this.isRunning && startId == 1)
+        {
+            Log.e("La alarma suena","La alarma se activara");
+            this.isRunning=true;
+            this.startId = 1;
+        }
+        //cualquier otra cosa
+        else
+        {
+            Log.e("otra cosa","caso extraño");
+        }
+
+
+
 
         return START_NOT_STICKY;
     }
@@ -54,7 +105,10 @@ public class RingtonePlayingService extends Service {
     public void onDestroy() {
 
         // Tell the user we stopped.
-        Toast.makeText(this, "On Destroyed Called", Toast.LENGTH_SHORT).show();
+        Log.e("onDestroyCalled","La aplicacion cierra");
+        super.onDestroy();
+        this.isRunning=false;
+
     }
 
 

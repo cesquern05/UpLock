@@ -18,11 +18,9 @@
         android:layout_height="wrap_content"
         android:text="Activar\nAlarma"
         android:id="@+id/btnAplicarAlarma"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/timePicker"
-        android:layout_alignStart="@+id/timePicker"
-        android:layout_marginBottom="133dp"
-       />
+        android:layout_alignTop="@+id/btnApagarAlarma"
+        android:layout_toLeftOf="@+id/radioButtonJueves"
+        android:layout_toStartOf="@+id/radioButtonJueves" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -30,9 +28,10 @@
         android:layout_height="wrap_content"
         android:text="Apagar\nAlarma"
         android:id="@+id/btnApagarAlarma"
-        android:layout_alignTop="@+id/btnAplicarAlarma"
-        android:layout_alignRight="@+id/timePicker"
-        android:layout_alignEnd="@+id/timePicker" />
+        android:layout_below="@+id/alarmMensaje"
+        android:layout_toRightOf="@+id/radioButtonViernes"
+        android:layout_toEndOf="@+id/radioButtonViernes"
+        android:layout_marginTop="40dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,5 +48,69 @@
         android:id="@+id/timePicker"
         android:timePickerMode="spinner"
         android:layout_centerHorizontal="true" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="L"
+        android:id="@+id/radioButtonLunes"
+        android:layout_below="@+id/timePicker"
+        android:layout_toLeftOf="@+id/radioButtonMartes"
+        android:layout_toStartOf="@+id/radioButtonMartes" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:id="@+id/radioButtonMartes"
+        android:layout_below="@+id/timePicker"
+        android:layout_toLeftOf="@+id/radioButtonMiercoles"
+        android:layout_toStartOf="@+id/radioButtonMiercoles" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:id="@+id/radioButtonMiercoles"
+        android:layout_below="@+id/timePicker"
+        android:layout_toLeftOf="@+id/radioButtonJueves"
+        android:layout_toStartOf="@+id/radioButtonJueves" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="J"
+        android:id="@+id/radioButtonJueves"
+        android:layout_below="@+id/timePicker"
+        android:layout_toLeftOf="@+id/radioButtonViernes"
+        android:layout_toStartOf="@+id/radioButtonViernes" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="V"
+        android:id="@+id/radioButtonViernes"
+        android:layout_below="@+id/timePicker"
+        android:layout_toLeftOf="@+id/radioButtonSabado"
+        android:layout_toStartOf="@+id/radioButtonSabado" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S"
+        android:id="@+id/radioButtonSabado"
+        android:layout_below="@+id/timePicker"
+        android:layout_toLeftOf="@+id/radioButtonDomingo"
+        android:layout_toStartOf="@+id/radioButtonDomingo" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D"
+        android:id="@+id/radioButtonDomingo"
+        android:layout_below="@+id/timePicker"
+        android:layout_alignRight="@+id/timePicker"
+        android:layout_alignEnd="@+id/timePicker" />
 
 </RelativeLayout>

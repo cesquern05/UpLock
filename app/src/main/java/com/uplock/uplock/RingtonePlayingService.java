@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -13,6 +14,7 @@ import android.widget.Toast;
  */
 public class RingtonePlayingService extends Service {
 
+    //alarmMensaje = (TextView) findViewById(R.id.alarmMensaje);
     MediaPlayer mediaSong;
     int startId;
     boolean isRunning;
@@ -56,6 +58,11 @@ public class RingtonePlayingService extends Service {
 
             //Inicia ringtone
             mediaSong.start();
+            Intent intentpop = new Intent(this, Pop.class);
+            intentpop.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            startActivity(intentpop);
+
 
             this.isRunning=true;
             this.startId = 0;

@@ -76,9 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 if (currentApiVersion > android.os.Build.VERSION_CODES.LOLLIPOP_MR1){
                     calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getHour());
                     calendar.set(Calendar.MINUTE, alarmTimePicker.getMinute());
+                    calendar.set(Calendar.SECOND,0);
                 } else {
                     calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getCurrentHour());
                     calendar.set(Calendar.MINUTE, alarmTimePicker.getCurrentMinute());
+                    calendar.set(Calendar.SECOND,0);
                 }
 
                 //Obtenemos hora y munuto en enteros para meterlos en un string
@@ -105,18 +107,31 @@ public class MainActivity extends AppCompatActivity {
                 {
                     minuteString = "0" + String.valueOf(minute);
                 }
-                //Metodo para cambiar el mensaje de la app
-                actualizarMensaje("Alarma Activada!\nLa alarma sonara a las " + hourString+":"+minuteString );
 
-                //enviar un String adicional en el intent para saber cuando se presiona un boton
-                myIntent.putExtra("extra","alarmON");
+                Calendar actual = Calendar.getInstance();
+                Log.e("hour", String.valueOf(hour));
+                Log.e("HoraActual", String.valueOf(actual.get(Calendar.HOUR_OF_DAY)));
+                Log.e("minute", String.valueOf(minute));
+                Log.e("MinutoActual", String.valueOf(actual.get(Calendar.MINUTE)));
 
-                //crear pending intent el cual se encarga del delay hasta la fecha indicada en la alarma
-                pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,myIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-                //establecer alarm manager
-                alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+                if(hour >= calendar.get(actual.HOUR_OF_DAY) && minute > actual.get(Calendar.MINUTE)) {
+                    //Metodo para cambiar el mensaje de la app
+                    actualizarMensaje("Alarma Activada!\nLa alarma sonara a las " + hourString + ":" + minuteString);
 
+                    //enviar un String adicional en el intent para saber cuando se presiona un boton
+                    myIntent.putExtra("extra", "alarmON");
+
+                    //crear pending intent el cual se encarga del delay hasta la fecha indicada en la alarma
+                    pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    //establecer alarm manager
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                }
+                else
+                {
+                    actualizarMensaje("La alarma no se activara Porque la hora tiene que ser mayor a la hora actual!!");
+                }
 
             }
         });

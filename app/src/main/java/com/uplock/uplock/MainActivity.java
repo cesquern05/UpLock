@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    actualizarMensaje("La alarma no se activara Porque la hora tiene que ser mayor a la hora actual!!");
+                    actualizarMensaje("La alarma no se activo\nLa hora tiene que ser mayor a la hora actual!!");
                 }
 
             }

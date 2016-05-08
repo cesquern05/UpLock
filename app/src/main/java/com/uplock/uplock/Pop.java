@@ -31,6 +31,9 @@ public class Pop extends Activity {
         TextView lblNum2 = (TextView) findViewById(R.id.lblNum2);
         Button btnRespuesta1 = (Button) findViewById(R.id.btnRespuesta1);
         Button btnRespuesta2 = (Button) findViewById(R.id.btnRespuesta2);
+        Button btnRespuesta3 = (Button) findViewById(R.id.btnRespuesta3);
+        Button btnRespuesta4 = (Button) findViewById(R.id.btnRespuesta4);
+
         final TextView mensaje = (TextView) findViewById(R.id.alarmMensaje);
 
 
@@ -52,7 +55,7 @@ public class Pop extends Activity {
         Log.e("Numero2", String.valueOf(Numero2));
         Operador = rnd.nextInt(2);
         Log.e("Operador", String.valueOf(Operador));
-        PosicionCorrecta=rnd.nextInt(2);
+        PosicionCorrecta=rnd.nextInt(4);
 
         lblNum1.setText(String.valueOf(Numero1));
 
@@ -70,10 +73,27 @@ public class Pop extends Activity {
         if(PosicionCorrecta==0) {
             btnRespuesta1.setText(String.valueOf(Respuesta));
             btnRespuesta2.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta3.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta4.setText(String.valueOf(rnd.nextInt(100)));
+
         }
-        else {
+        else if(PosicionCorrecta==1) {
             btnRespuesta2.setText(String.valueOf(Respuesta));
             btnRespuesta1.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta3.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta4.setText(String.valueOf(rnd.nextInt(100)));
+        }
+        else if(PosicionCorrecta==2) {
+            btnRespuesta3.setText(String.valueOf(Respuesta));
+            btnRespuesta1.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta2.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta4.setText(String.valueOf(rnd.nextInt(100)));
+        }
+        else if(PosicionCorrecta==3) {
+            btnRespuesta4.setText(String.valueOf(Respuesta));
+            btnRespuesta1.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta2.setText(String.valueOf(rnd.nextInt(100)));
+            btnRespuesta3.setText(String.valueOf(rnd.nextInt(100)));
         }
 
         getWindow().setLayout((int)(width*.8),(int)(height*.6));
@@ -95,6 +115,32 @@ public class Pop extends Activity {
             @Override
             public void onClick(View v) {
                 if (PosicionCorrecta == 1) {
+                    finish();
+                    myIntent.putExtra("extra", "alarmOFF");
+                    sendBroadcast(myIntent);;
+                    MainActivity ma = new MainActivity();
+                    ma.alarmMensaje.setText("Alarma Apagada!");
+                }
+            }
+        });
+
+        btnRespuesta3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (PosicionCorrecta == 2) {
+                    finish();
+                    myIntent.putExtra("extra", "alarmOFF");
+                    sendBroadcast(myIntent);;
+                    MainActivity ma = new MainActivity();
+                    ma.alarmMensaje.setText("Alarma Apagada!");
+                }
+            }
+        });
+
+        btnRespuesta4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (PosicionCorrecta == 3) {
                     finish();
                     myIntent.putExtra("extra", "alarmOFF");
                     sendBroadcast(myIntent);;

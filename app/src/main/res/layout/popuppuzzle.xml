@@ -60,4 +60,20 @@
         android:layout_marginTop="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnRespuesta3"
+        android:id="@+id/btnRespuesta3"
+        android:layout_below="@+id/btnRespuesta2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnRespuesta4"
+        android:id="@+id/btnRespuesta4"
+        android:layout_below="@+id/btnRespuesta3"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

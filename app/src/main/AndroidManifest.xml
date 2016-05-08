@@ -23,7 +23,8 @@
         <service android:name=".RingtonePlayingService" android:enabled="true"></service>
 
 
-        <activity android:name=".Pop"></activity>
+        <activity android:name=".Pop"
+                  android:showOnLockScreen="true"></activity>
     </application>
 
 

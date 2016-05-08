@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +62,11 @@ public class RingtonePlayingService extends Service {
             mediaSong.start();
 
             Intent intentpop = new Intent(this, Pop.class);
-            intentpop.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intentpop.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                    | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                    | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                    | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
             startActivity(intentpop);
 

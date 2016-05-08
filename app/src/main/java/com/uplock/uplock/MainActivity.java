@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //Inicializar alarm manager
     AlarmManager alarmManager;
     TimePicker alarmTimePicker;
-    TextView alarmMensaje;
+    public static TextView alarmMensaje;
     Context context;
     PendingIntent pendingIntent;
     RadioButton radioButtonLunes;
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         btnApagarAlarma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                actualizarMensaje("Alarma Apagada!");
+                actualizarMensaje("Alarma Cancelada!");
 
                 alarmManager.cancel(pendingIntent);
 

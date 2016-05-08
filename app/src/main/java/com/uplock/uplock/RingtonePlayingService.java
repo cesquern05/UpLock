@@ -57,7 +57,9 @@ public class RingtonePlayingService extends Service {
             mediaSong = MediaPlayer.create(this,R.raw.deadpool);
 
             //Inicia ringtone
+            mediaSong.setLooping(true);
             mediaSong.start();
+
             Intent intentpop = new Intent(this, Pop.class);
             intentpop.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -106,6 +108,12 @@ public class RingtonePlayingService extends Service {
 
 
         return START_NOT_STICKY;
+    }
+
+
+    public void detenerRingtone()
+    {
+        mediaSong.stop();
     }
 
     @Override

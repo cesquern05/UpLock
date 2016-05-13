@@ -8,9 +8,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="lblNum1"
+        android:textSize="30sp"
         android:id="@+id/lblNum1"
-        android:layout_marginTop="104dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
         android:layout_toLeftOf="@+id/lblOperador"
         android:layout_toStartOf="@+id/lblOperador" />
 
@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="lblOperador"
+        android:textSize="30sp"
         android:id="@+id/lblOperador"
         android:layout_alignTop="@+id/lblNum1"
         android:layout_centerHorizontal="true" />
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="lblNum2"
+        android:textSize="30sp"
         android:id="@+id/lblNum2"
         android:layout_alignTop="@+id/lblOperador"
         android:layout_toRightOf="@+id/lblOperador"
@@ -37,18 +39,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btnRespuesta1"
+        android:textSize="20sp"
         android:id="@+id/btnRespuesta1"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btnRespuesta2"
+        android:textSize="20sp"
         android:id="@+id/btnRespuesta2"
         android:layout_below="@+id/btnRespuesta1"
         android:layout_alignLeft="@+id/btnRespuesta1"
-        android:layout_alignStart="@+id/btnRespuesta1" />
+        android:layout_alignStart="@+id/btnRespuesta1"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:layout_marginBottom="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,15 +75,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btnRespuesta3"
+        android:textSize="20sp"
         android:id="@+id/btnRespuesta3"
         android:layout_below="@+id/btnRespuesta2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:layout_marginBottom="5dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btnRespuesta4"
+        android:textSize="20sp"
         android:id="@+id/btnRespuesta4"
         android:layout_below="@+id/btnRespuesta3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:layout_marginBottom="5dp" />
 </RelativeLayout>

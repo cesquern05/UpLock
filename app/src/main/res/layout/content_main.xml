@@ -17,21 +17,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Activar\nAlarma"
+        android:textSize="17sp"
         android:id="@+id/btnAplicarAlarma"
         android:layout_alignTop="@+id/btnApagarAlarma"
         android:layout_alignLeft="@+id/timePicker"
-        android:layout_alignStart="@+id/timePicker" />
+        android:layout_alignStart="@+id/timePicker"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancelar\nAlarma"
+        android:textSize="17sp"
         android:id="@+id/btnApagarAlarma"
         android:layout_marginTop="77dp"
         android:layout_below="@+id/alarmMensaje"
         android:layout_alignRight="@+id/timePicker"
-        android:layout_alignEnd="@+id/timePicker" />
+        android:layout_alignEnd="@+id/timePicker"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,7 +1,9 @@
 package com.uplock.uplock;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ public class RingtonePlayingService extends Service {
 
     //alarmMensaje = (TextView) findViewById(R.id.alarmMensaje);
     MediaPlayer mediaSong;
+    Context context;
     int startId;
     boolean isRunning;
     @Nullable
@@ -47,7 +50,7 @@ public class RingtonePlayingService extends Service {
             startId = 0;
         }
 
-
+        this.context = this;
 
         //instrucciones if else
         //si la alarma no esta sonando y el usuario presiono "encender alarma": inicia la alarma
@@ -57,16 +60,15 @@ public class RingtonePlayingService extends Service {
             //crea instancia de media player
             mediaSong = MediaPlayer.create(this,R.raw.deadpool);
 
+            AudioManager audioManager = (AudioManager)getSystemService(context.AUDIO_SERVICE);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+
             //Inicia ringtone
             mediaSong.setLooping(true);
             mediaSong.start();
 
             Intent intentpop = new Intent(this, Pop.class);
-            intentpop.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-                    | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                    | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                    | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+            intentpop.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             startActivity(intentpop);
 

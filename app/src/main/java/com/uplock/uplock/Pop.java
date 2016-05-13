@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.util.Random;
 
 /**
@@ -107,6 +109,20 @@ public class Pop extends Activity {
                     sendBroadcast(myIntent);
                     MainActivity ma = new MainActivity();
                     ma.alarmMensaje.setText("Alarma Apagada!");
+                } else {
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "RESPUESTA INCORRECTA!\nGENERANDO NUEVA OPERACION!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                    Intent intent = getIntent();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    finish();
+                    startActivity(intent);
                 }
             }
         });
@@ -117,9 +133,25 @@ public class Pop extends Activity {
                 if (PosicionCorrecta == 1) {
                     finish();
                     myIntent.putExtra("extra", "alarmOFF");
-                    sendBroadcast(myIntent);;
+                    sendBroadcast(myIntent);
+                    ;
                     MainActivity ma = new MainActivity();
                     ma.alarmMensaje.setText("Alarma Apagada!");
+                } else {
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "RESPUESTA INCORRECTA!\n" +
+                            "GENERANDO NUEVA OPERACION!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                    Intent intent = getIntent();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    finish();
+                    startActivity(intent);
                 }
             }
         });
@@ -133,6 +165,21 @@ public class Pop extends Activity {
                     sendBroadcast(myIntent);;
                     MainActivity ma = new MainActivity();
                     ma.alarmMensaje.setText("Alarma Apagada!");
+                }else {
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "RESPUESTA INCORRECTA!\n" +
+                            "GENERANDO NUEVA OPERACION!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                    Intent intent = getIntent();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    finish();
+                    startActivity(intent);
                 }
             }
         });
@@ -146,6 +193,21 @@ public class Pop extends Activity {
                     sendBroadcast(myIntent);;
                     MainActivity ma = new MainActivity();
                     ma.alarmMensaje.setText("Alarma Apagada!");
+                }else {
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "RESPUESTA INCORRECTA!\n" +
+                            "GENERANDO NUEVA OPERACION!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                    Intent intent = getIntent();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    finish();
+                    startActivity(intent);
                 }
             }
         });

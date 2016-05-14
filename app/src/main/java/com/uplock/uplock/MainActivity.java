@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MinutoActual", String.valueOf(actual.get(Calendar.MINUTE)));
 
 
-                if(hour >= calendar.get(actual.HOUR_OF_DAY) && minute > actual.get(Calendar.MINUTE)) {
+                if(hour > actual.get(Calendar.HOUR_OF_DAY) || (hour==actual.get(Calendar.HOUR_OF_DAY) && minute > actual.get(Calendar.MINUTE))) {
                     //Metodo para cambiar el mensaje de la app
                     actualizarMensaje("Alarma Activada!\nLa alarma sonara a las " + hourString + ":" + minuteString);
 
